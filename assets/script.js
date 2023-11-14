@@ -7,44 +7,44 @@
 var today = dayjs().format('dddd, D MMMM YYYY')
 $('#currentDay').text(today);
 
-var currentHour1 = dayjs().format("HH");
-console.log(currentHour1)
 
-document.querySelectorAll('.saveBtn').forEach(button => {
-  button.addEventListener('click', function() {
-    const timeBlock = this.closest('.time-block');
-    if (timeBlock) {
-      const timeBlockId = timeBlock.id;
-      const userInput = timeBlock.querySelector('.description').value;
+
+$(document).ready(function() {
+  $('.saveBtn').on('click', function() {
+    var timeBlock = $(this).closest('.time-block');
+    if (timeBlock.length > 0) {
+      var timeBlockId = timeBlock.attr('id');
+      var userInput = timeBlock.find('.description').val();
       localStorage.setItem(timeBlockId, userInput);
     }
   });
-});
 
-const currentTime = dayjs().hour(); // Get the current hour using Day.js (24-hour format)
+ // Get the current hour using Day.js (24-hour format)
+var currentHour = 12;
+console.log(currentHour)
 
-document.querySelectorAll('.time-block').forEach(block => {
-  const blockHour = parseInt(block.id.split('-')[1]);
 
-  if (blockHour < currentTime) {
-    block.classList.remove('present', 'future');
-    block.classList.add('past');
-  } else if (blockHour === currentTime) {
-    block.classList.remove('past', 'future');
-    block.classList.add('present');
-  } else {
-    block.classList.remove('past', 'present');
-    block.classList.add('future');
-  }
-});
 
-document.querySelectorAll('.time-block').forEach(block => {
-  const blockId = block.id;
-  const userInput = localStorage.getItem(blockId);
+  $('.time-block').each(function() {
+    var blockHour = parseInt($(this).attr('id').split('-')[1]);
 
-  if (userInput) {
-    block.querySelector('.description').value = userInput;
-  }
+    if (blockHour < currentHour) {
+      $(this).removeClass('present future').addClass('past');
+    } else if (blockHour === currentHour) {
+      $(this).removeClass('past future').addClass('present');
+    } else {
+      $(this).removeClass('past present').addClass('future');
+    }
+  });
+
+  $('.time-block').each(function() {
+    var blockId = $(this).attr('id');
+    var userInput = localStorage.getItem(blockId);
+
+    if (userInput) {
+      $(this).find('.description').val(userInput);
+    }
+  });
 });
 
   // TODO: Add a listener for click events on the save button. This code should
