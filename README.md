@@ -15,10 +15,10 @@ N/A
 
 ## Usage
 
-Link: 
+Link: https://dtran44.github.io/Work-Day-Scheduler/
 
 Screenshot: 
-[alt text]([assets/images/Horiseon-Marketing-website.html)](https://github.com/dtran44/Horiseon-Marketing-website/blob/main/assets/images/Horiseon-Marketing-website.html.png)
+[alt text](https://github.com/dtran44/Work-Day-Scheduler/blob/main/assets/Work%20Day%20Scheduler%20.jpg)
 
 ## License
 
