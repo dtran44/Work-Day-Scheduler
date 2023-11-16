@@ -15,7 +15,7 @@ $(document).ready(function() {
   });
 
  // Get the current hour using Day.js (24-hour format)
- var currentHour = dayjs().format("HH");
+ var currentHour = 12;
 
   // This applies the past, present, or future class formatting to each time block by comparing the id to the current hour.
 
